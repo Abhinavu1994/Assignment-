@@ -2,8 +2,10 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './Screens/Home'; // Import your screens
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import List from './Screens/List';
 import Notification from './Screens/Notification';
@@ -20,14 +22,14 @@ function MyTabs() {
         headerShown: false,
       }}>
       <Tab.Screen
-        name="Home"
+        name="Home1"
         component={Home}
         options={{
           tabBarBadge: 1,
           tabBarLabel: 'Home',
-          //   tabBarIcon: ({size, color}) => (
-          //     <Icon name="ios-heart" size={30} color="red" />
-          //   ),
+          tabBarIcon: ({size, color}) => (
+            <FontAwesome5 name="home" color={color} size={size} />
+          ),
         }}
       />
       <Tab.Screen
@@ -35,9 +37,29 @@ function MyTabs() {
         component={List}
         options={{
           tabBarLabel: 'List',
-          //   tabBarIcon: ({size, color}) => (
-          //     <Icon name="ios-heart" size={30} color="red" />
-          //   ),
+          tabBarIcon: ({size, color}) => (
+            <FontAwesome5 name="list-alt" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Notification"
+        component={Notification}
+        options={{
+          tabBarLabel: 'Notification',
+          tabBarIcon: ({size, color}) => (
+            <Ionicons name="notifications" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({size, color}) => (
+            <FontAwesome5 name="user" size={size} color={color} />
+          ),
         }}
       />
     </Tab.Navigator>
@@ -50,7 +72,7 @@ function AppNavigation() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
         }}>
         <Stack.Screen
           name="Home"
